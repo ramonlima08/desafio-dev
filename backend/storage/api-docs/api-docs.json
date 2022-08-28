@@ -29,8 +29,8 @@
                 "tags": [
                     "Transações"
                 ],
-                "summary": "Lista as Transações",
-                "description": "Endpoint destinado a prover informações gerais de dados importados",
+                "summary": "Resumo dos dados importados",
+                "description": "Endpoint destinado a prover o resumo dos dados importados",
                 "operationId": "summaryTransacoes",
                 "responses": {
                     "200": {
@@ -49,6 +49,69 @@
                                                 "totCredit": 6387.11,
                                                 "totDebit": 24906,
                                                 "totBalance": -18518.89
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/transaction/store": {
+            "post": {
+                "tags": [
+                    "Transações"
+                ],
+                "summary": "Lista as Transações da Loja",
+                "description": "Endpoint destinado a listagem das Transações de uma determinada Loja",
+                "operationId": "listStoresTransacoes",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "store": {
+                                        "description": "Nome da Loja",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Lista de transações",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/store": {
+            "get": {
+                "tags": [
+                    "Loja"
+                ],
+                "summary": "Lista as Lojas",
+                "description": "Endpoint destinado a prover os nomes das lojas importadas",
+                "operationId": "listStores",
+                "responses": {
+                    "200": {
+                        "description": "Lojas importadas",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "result": {
+                                        "summary": "Resultado será um objeto",
+                                        "value": {
+                                            "data": {
+                                                "store_name": "Nome da Loja"
                                             }
                                         }
                                     }
