@@ -49,16 +49,16 @@ class TransactionController extends Controller
      * @OA\Get(
      *     path="/api/summary",
      *     tags={"Transações"},
-     *     summary="Lista as Transações",
-     *     description="Endpoint destinado a prover informações gerais de dados importados",
+     *     summary="Resumo dos dados importados",
+     *     description="Endpoint destinado a prover o resumo dos dados importados",
      *     operationId="summaryTransacoes",
      *     
      *     @OA\Response(
      *         response="200", 
      *         description="Agrupamento de infomrações já importadas",
      *          @OA\JsonContent(
-    *             @OA\Examples(example="result", value={"data": {"totImports": 4, "totTransactions": 64, "totStores": 6, "totCredit": 6387.11, "totDebit": 24906, "totBalance": -18518.89}}, summary="Resultado será um objeto")
-    *         )
+     *             @OA\Examples(example="result", value={"data": {"totImports": 4, "totTransactions": 64, "totStores": 6, "totCredit": 6387.11, "totDebit": 24906, "totBalance": -18518.89}}, summary="Resultado será um objeto")
+     *         )
      *     ),
      * )
      */
