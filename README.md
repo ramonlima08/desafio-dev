@@ -50,7 +50,7 @@ const backendUrl = 'http://<ip/domain>:8008/api/';
 ```
 
 
-## Funcionalidade
+## Funcionalidades
 
 - Importação de arquivo CNAB
 - Visualização de resumo de importações
