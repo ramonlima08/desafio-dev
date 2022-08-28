@@ -74,6 +74,33 @@ class TransactionController extends Controller
         }
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/transaction/store",
+     *     tags={"Transações"},
+     *     summary="Lista as Transações da Loja",
+     *     description="Endpoint destinado a listagem das Transações de uma determinada Loja",
+     *     operationId="listStoresTransacoes",
+     *     
+     *     @OA\Response(
+     *         response="200", 
+     *         description="Lista de transações",
+     *         @OA\MediaType(mediaType="application/json"),
+     *     ),
+     *      @OA\RequestBody(
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *                  @OA\Property(
+     *                      property="store",
+     *                      type="string",
+     *                      description="Nome da Loja",
+     *                 ),
+     *              ),
+     *           ),
+     *      ),
+     * )
+     */
     public function storeTransactions(Request $request)
     {
         try {
