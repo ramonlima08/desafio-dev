@@ -24,6 +24,18 @@ Para rodar o projeto é necessário ter instalado:
 - [docker](https://docs.docker.com/get-docker/)
 - [docker compose](https://docs.docker.com/compose/install/)
 
+Baixar o projeto
+
+```bash
+$ git clone git@github.com:ramonlima08/desafio-dev.git
+```
+
+Acessar o diretório do projeto
+
+```bash
+$ cd desafio-dev
+```
+
 Criar as imagens e subir os serviços
 
 ```bash
@@ -39,14 +51,19 @@ $ docker exec bycoderstec-api \bash install.sh
 - O Backend API estará rodando em localhost:8008
 - O Frontend estará rodando em localhost:8007
 
-:warning: Se você não estiver rodando a aplicação no localhost 
+Pelo o browser acesse http://localhost:8007/
+
+---
+:warning: **Atenção**
+
+Se você não estiver rodando a aplicação no localhost 
 vai precisar alterar a configuração do front.
 
 Para apontar o front para um backend que não seja o localhost:8008
 navegue até o arquivo `frontend/src/config.js` e altere a constante `backendUrl`
 
 ```bash
-const backendUrl = 'http://<ip/domain>:8008/api/';
+const backendUrl = 'http://localhost:8008/api/';
 ```
 
 
@@ -58,6 +75,153 @@ const backendUrl = 'http://<ip/domain>:8008/api/';
 - Listagem de transações por loja
 - Documentação da API com Swagger (http://localhost:8008/api/documentation)
 
+## Informações de consumo dos endpoints
+
+### Rotas
+**Swagger: http://localhost:8008/api/documentation**
+
+|route|HTTP Method|params|description
+|:---|:---:|:---:|:---:
+|`/summary`|GET| - |Retorna o resumo dos dados importados.
+|`/transactions`|GET| - |Retorna todas as transações.
+|`/transaction/store`|POST|`store` deve conter o Nome da Loja|Retorna as transações de uma Loja.
+|`/transaction/import`|POST|`file` deve conter o arquivo CNAB `txt` |Importa as transações do arquivo.
+|`/store`|GET| - |Retorna todas as lojas.
+
+### Requests
+* `GET /summary`
+
+Request:
+```bash
+curl --location --request GET 'localhost:8008/api/summary'
+```
+
+Response:
+```json
+{
+    "data": {
+        "totImports": 1,
+        "totTransactions": 21,
+        "totStores": 5,
+        "totCredit": 2048.52,
+        "totDebit": 8302,
+        "totBalance": -6253.48
+    }
+}
+```
+
+* `GET /transactions`
+
+Request:
+```bash
+curl --location --request GET 'localhost:8008/api/transaction'
+```
+
+Response:
+```json
+{
+    "data": [
+        {
+            "id": 1,
+            "import_history_id": 1,
+            "type_transaction_id": 3,
+            "date": "2019-03-01",
+            "value": 142,
+            "cpf": "09620676017",
+            "card": "4753****3153",
+            "hour": "15:34:53",
+            "store_owner": "JOÃO MACEDO",
+            "store_name": "BAR DO JOÃO",
+            "deleted_at": null,
+            "created_at": "2022-08-28T14:12:15.000000Z",
+            "updated_at": "2022-08-28T14:12:15.000000Z",
+            "type_transaction": {
+                "id": 3,
+                "name": "Financiamento",
+                "type": "saida",
+                "deleted_at": null,
+                "created_at": "2022-08-28T14:10:07.000000Z",
+                "updated_at": "2022-08-28T14:10:07.000000Z"
+            }
+        }
+    ]
+}
+```
+
+* `POST /transaction/store`
+
+Request:
+```bash
+curl --location --request POST 'localhost:8008/api/transaction/store' \
+--form 'store="BAR DO JOÃO"'
+```
+
+Response:
+```json
+{
+    "data": [
+        {
+            "id": 1,
+            "import_history_id": 1,
+            "type_transaction_id": 3,
+            "date": "2019-03-01",
+            "value": 142,
+            "cpf": "09620676017",
+            "card": "4753****3153",
+            "hour": "15:34:53",
+            "store_owner": "JOÃO MACEDO",
+            "store_name": "BAR DO JOÃO",
+            "deleted_at": null,
+            "created_at": "2022-08-28T14:12:15.000000Z",
+            "updated_at": "2022-08-28T14:12:15.000000Z",
+            "type_transaction": {
+                "id": 3,
+                "name": "Financiamento",
+                "type": "saida",
+                "deleted_at": null,
+                "created_at": "2022-08-28T14:10:07.000000Z",
+                "updated_at": "2022-08-28T14:10:07.000000Z"
+            }
+        }
+    ]
+}
+```
+
+* `POST /transaction/import	`
+
+Request:
+```bash
+curl --location --request POST 'localhost:8008/api/transaction/import' \
+--form 'file=@"/C:/Users/user/CNAB.txt"'
+```
+
+Response:
+```json
+{
+    "data": {
+        "transaction_history_id": 1,
+        "transactions_imported": 21
+    }
+}
+```
+
+* `GET /store`
+
+Request:
+```bash
+curl --location --request GET 'localhost:8008/api/store'
+```
+
+Response:
+```json
+{
+    "data": [
+        {
+            "store_name": "BAR DO JOÃO"
+        }
+    ]
+}
+```
 
 ## Aprendizados
 
