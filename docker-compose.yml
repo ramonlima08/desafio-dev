@@ -1,0 +1,64 @@
+version: "3.7"
+services:
+  back-api:
+    build:
+      args:
+        user: develop
+        uid: 1000
+      context: ./backend/
+      dockerfile: Dockerfile
+    image: php74-laravel
+    container_name: bycoderstec-api
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./backend/:/var/www
+    networks:
+      - bycoderstec
+
+  back-db:
+    image: mysql:5.7
+    container_name: bycoderstec-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: p@ssR00t
+      MYSQL_DATABASE: bycoderstec
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./backend/docker-compose/mysql:/docker-entrypoint-initdb.d
+      - ./backend/docker-compose/mysql/dbdata:/var/lib/mysql
+    networks:
+      - bycoderstec
+
+  back-nginx:
+    image: nginx:alpine
+    container_name: bycoderstec-nginx
+    restart: unless-stopped
+    ports:
+      - 8008:80
+    volumes:
+      - ./backend/:/var/www
+      - ./backend/docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - bycoderstec
+
+  front:
+    build:
+        context: ./frontend/
+        dockerfile: Dockerfile
+    image: node-react
+    container_name: bycoderstec-front
+    volumes:
+        - ./frontend/:/app
+        - /app/node_modules
+    ports:
+        - 8007:3000
+    environment:
+        - NODE_ENV=development
+    networks:
+    - bycoderstec
+
+networks:
+  bycoderstec:
+    driver: bridge
