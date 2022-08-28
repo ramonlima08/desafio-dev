@@ -113,6 +113,23 @@ class TransactionController extends Controller
         }
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/store",
+     *     tags={"Loja"},
+     *     summary="Lista as Lojas",
+     *     description="Endpoint destinado a prover os nomes das lojas importadas",
+     *     operationId="listStores",
+     *     
+     *     @OA\Response(
+     *         response="200", 
+     *         description="Lojas importadas",
+     *          @OA\JsonContent(
+     *             @OA\Examples(example="result", value={"data": {"store_name": "Nome da Loja"}}, summary="Resultado será um objeto")
+     *         )
+     *     ),
+     * )
+     */
     public function stores()
     {
         try {
