@@ -8,6 +8,12 @@
 body {
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
+  background: #F0F2F5 ;
+  -webkit-font-smoothing: antialiased
+}
+
+body, input, button {
+  font: 16px "Poppins", sans-serif;
 }
 
 .container {
@@ -15,38 +21,75 @@ body {
 }
 
 .content {
-  display: flex;
-  align-items: flex-start;
-  justify-content: left;
-  flex-direction: column;
-  padding: 5px 30px;
+  width: 100%;
+  max-width: 1168px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
 .card {
-  display: flex;
-  background: #fafafa;
-  flex-direction: column;
-  border: 1px solid #b4b4b4;
-  border-radius: 10px;
-  width: 90%;
-  padding: 20px;
-  margin: 10px 0;
+  background-color: #fdfdfd;
+  padding: 22px 32px;
+  border-radius: 5px;
+  color: #363F5F;
+  display: grid;
 }
+
+.card header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+.card h1 {
+    margin-top: 14px;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 54px;
+}
+
 
 p {
   margin: 5px 0;
 }
 
 table {
-  border: 1px solid rgb(180, 180, 180);
-  background: #ffffff;
+  width: 100%;
+  border-spacing: 0 4px;
+}
+
+table th {
+    color: #353535;
+    font-weight: 600;
+    padding: 20px 32px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 table td {
-  padding: 3px;
-  background: #ffffff;
-  border-right: 1px solid rgb(180, 180, 180);
-  border-bottom: 1px solid rgb(180, 180, 180);
+    padding: 20px 14px;
+    border: 0;
+    background: #edecec;
+    font-size: 14px;
+    font-weight: normal;
+    color: #48494d;
+}
+
+table td .title {
+  color: #363f5f;
+}
+
+table td .income {
+  color: #12a454;
+}
+table td .outcome {
+  color: #e83f5b;
+}
+td:first-child {
+  border-radius: 8px 0 0 8px;
+}
+td:last-child {
+  border-radius: 0 8px 8px 0;
 }
 
 button {
@@ -56,4 +99,5 @@ button {
   padding: 5px 15px;
   font-weight: 500;
   margin: 10px 0;
+  cursor: pointer;
 }
