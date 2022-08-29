@@ -55,7 +55,8 @@ class ImportHistoryController extends Controller
             //excluindo as transações
             Transaction::where('import_history_id', $importHistory->id)->delete();
 
-            $importHistory->delete();
+            $importHistory->status = 'reversed';
+            $importHistory->update();
 
             DB::commit();
             return $this->successResponse([], Response::HTTP_CREATED);
