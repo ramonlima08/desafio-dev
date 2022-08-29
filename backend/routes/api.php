@@ -9,3 +9,4 @@ Route::post('transaction/store', [\App\Http\Controllers\Api\TransactionControlle
 Route::post('transaction/import', [\App\Http\Controllers\Api\TransactionController::class,'import']);
 
 Route::get('importhistory', [\App\Http\Controllers\Api\ImportHistoryController::class,'index']);
+Route::post('importhistory/toreverse', [\App\Http\Controllers\Api\ImportHistoryController::class,'toReverse']);
