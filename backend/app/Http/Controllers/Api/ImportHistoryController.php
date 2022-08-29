@@ -15,10 +15,21 @@ use Illuminate\Support\Facades\Validator;
 class ImportHistoryController extends Controller
 {
     use ApiResponserTrait;
+    
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @OA\Get(
+     *     path="/api/importhistory",
+     *     tags={"Importações"},
+     *     summary="Lista as Importações",
+     *     description="Endpoint destinado a listagem das Imporações",
+     *     operationId="listImports",
+     *     
+     *     @OA\Response(
+     *         response="200", 
+     *         description="Lista de Imporações",
+     *         @OA\MediaType(mediaType="application/json"),
+     *     ),
+     * )
      */
     public function index()
     {
@@ -27,11 +38,41 @@ class ImportHistoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @OA\Post(
+     *     path="/api/importhistory/toreverse",
+     *     tags={"Importações"},
+     *     summary="Revert uma Importação",
+     *     description="Endpoint destinado a reverter uma importação de arquivo CNAB, removendo as transações e alterando o status da importação",
+     *     operationId="revertImports",
+     *     @OA\MediaType(mediaType="multipart/form-data"),
+     *     @OA\Response(
+     *         response="201", 
+     *         description="Reverção executada com sucesso",
+     *         @OA\MediaType(mediaType="application/json"),
+     *     ),
+     *     @OA\Response(
+     *         response="422", 
+     *         description="Parametros esperados não foram encontrados",
+     *         @OA\MediaType(mediaType="application/json"),
+     *     ),
+     *     @OA\Response(
+     *         response="500", 
+     *         description="Erro no processamento dos dados",
+     *         @OA\MediaType(mediaType="application/json"),
+     *     ),
+     *      @OA\RequestBody(
+     *          @OA\MediaType(
+     *              mediaType="multipart/form-data",
+     *              @OA\Schema(
+     *                  type="object",
+     *                  @OA\Property(
+     *                     description="Id da importação",
+     *                     property="id",
+     *                  ),
+     *              ),
+     *           ),
+     *      ),
+     * )
      */
     public function toReverse(Request $request)
     {
