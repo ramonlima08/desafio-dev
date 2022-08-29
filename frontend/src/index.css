@@ -101,3 +101,7 @@ button {
   margin: 10px 0;
   cursor: pointer;
 }
+
+button.slim {
+  margin: -6px;
+}
