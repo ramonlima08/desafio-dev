@@ -73,6 +73,8 @@ const backendUrl = 'http://localhost:8008/api/';
 - Visualização de resumo de importações
 - Listagem de todas as transações
 - Listagem de transações por loja
+- Listagem de importações
+- Reverter importações
 - Documentação da API com Swagger (http://localhost:8008/api/documentation)
 
 ## Informações de consumo dos endpoints
@@ -87,6 +89,8 @@ const backendUrl = 'http://localhost:8008/api/';
 |`/transaction/store`|POST|`store` deve conter o Nome da Loja|Retorna as transações de uma Loja.
 |`/transaction/import`|POST|`file` deve conter o arquivo CNAB `txt` |Importa as transações do arquivo.
 |`/store`|GET| - |Retorna todas as lojas.
+|`/importhistory`|GET| - |Retorna todas as importações.
+|`/importhistory/toreverse`|POST|`id` deve conter o id da importação |Reverter uma importação.
 
 ### Requests
 * `GET /summary`
@@ -110,6 +114,7 @@ Response:
 }
 ```
 
+---
 * `GET /transactions`
 
 Request:
@@ -148,6 +153,7 @@ Response:
 }
 ```
 
+---
 * `POST /transaction/store`
 
 Request:
@@ -187,6 +193,7 @@ Response:
 }
 ```
 
+---
 * `POST /transaction/import	`
 
 Request:
@@ -205,6 +212,7 @@ Response:
 }
 ```
 
+---
 * `GET /store`
 
 Request:
@@ -220,6 +228,46 @@ Response:
             "store_name": "BAR DO JOÃO"
         }
     ]
+}
+```
+
+---
+* `GET /importhistory`
+
+Request:
+```bash
+curl --location --request GET 'localhost:8008/api/importhistory'
+```
+
+Response: 
+```json
+{
+    "data": [
+        {
+            "id": 1,
+            "date": "2022-08-25 17:58:00",
+            "file": "path/file.txt",
+            "status": "importado",
+            "deleted_at": null,
+            "created_at": "2022-08-25T17:58:07.000000Z",
+            "updated_at": "2022-08-29T12:35:19.000000Z"
+        }
+    ]
+}
+```
+
+---
+* `POST /importhistory/toreverse`
+
+Request:
+```bash
+curl --location --request GET 'localhost:8008/api/importhistory/toreverse'
+```
+
+Response: 201
+```json
+{
+    "data": []
 }
 ```
 
