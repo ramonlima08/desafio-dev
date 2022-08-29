@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import NumberFormat from 'react-number-format';
 import Navigation from "../../Components/Navbar";
 import Card from "../../Components/Card";
 import backendUrl from "../../config.js";
