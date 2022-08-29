@@ -11,6 +11,7 @@ const Navigation = () => {
                 <Link to="/transacao"> Transações </Link>
                 <Link to="/transacao/loja"> Transações por Lojas </Link>
                 <Link to="/importacao"> Importar </Link>
+                <Link to="/importhistory"> Arquivos Importados </Link>
             </div>
 
             <div className='navbar_right'>
