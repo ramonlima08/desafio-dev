@@ -17,6 +17,8 @@ e salvar suas informações(transações financeiras) em uma base de dados.
 
 **Documentação API:** Swagger v3
 
+**Testes:** PHPUnit 9.3
+
 ## Instalação 
 
 Para rodar o projeto é necessário ter instalado:
@@ -270,6 +272,14 @@ Response: 201
     "data": []
 }
 ```
+
+## Testes
+
+Para executar os testes execute o comando abaixo
+```bash
+docker exec bycoderstec-api php artisan test
+```
+
 
 ## Aprendizados
 
