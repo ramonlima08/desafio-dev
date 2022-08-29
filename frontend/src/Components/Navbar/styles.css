@@ -1,5 +1,5 @@
 .navbar {
-    background: #efefef;
+    background: #a300e7;
     grid-area: nav;
     height: 60px;
     display: flex;
@@ -11,7 +11,7 @@
 .navbar_left {
     margin-right: 30px;
     text-decoration: none;
-    color: #4b4a4a;
+    color: #FFF;
     font-size: 15px;
     font-weight: 700;
 }
@@ -19,7 +19,7 @@
 .navbar_left > a {
     padding: 0 10px 0 10px;
     text-decoration: none;
-    color: #424040;
+    color: #FFF;
 }
 
 .navbar_left .active_link {
@@ -32,10 +32,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #FFF;
 }
 
 .navbar_right > a {
     padding: 0 10px 0 10px;
     text-decoration: none;
-    color: #271f1f;
+    color: #FFF;
 }
