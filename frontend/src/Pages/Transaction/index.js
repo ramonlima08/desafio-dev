@@ -6,11 +6,10 @@ import backendUrl from "../../config.js";
 import './styles.css'
 
 const Transaction = () => {
-    const [isLoaded, setIsLoaded] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(true)
     const [items, setItems] = useState([])
 
     useEffect(() => {  
-        setIsLoaded(true)
         getTransactions()
     }, [])
 
@@ -21,27 +20,26 @@ const Transaction = () => {
             .then(
                 (result) => {
                     setItems(result.data)
-                    console.log(result.data);
+                    console.log(result.data)
+                    setIsLoaded(false)
                 },
                 (error) => {
-                    
+                    setIsLoaded(false)
+                    alert('Erro ao consultar os dados')
                 }
             )
     }
 
-    if (!isLoaded) {
-        return <div>Loading...</div>;
-    } else {
+    return (
+        <div className="container">
+            <Navigation />
+            <div className="content">
+            <br />
+                <h1>Lista de Transações</h1>
 
-        return (
-            <div className="container">
-                <Navigation />
-                <div className="content">
-                <br />
-                    <h1>Lista de Transações</h1>
-
-                    <Card>
-                        <br />
+                <Card>
+                    <br />
+                    {!isLoaded ? (
                         <table>
                             <thead>
                                 <tr>
@@ -83,18 +81,22 @@ const Transaction = () => {
                             })) : (
                                 <tr>
                                     <td colSpan={8}>
-                                        Carregando ...
+                                        Nenhum registro encontrado
                                     </td>
                                 </tr>
                             )}
                             </tbody>
                         </table>
-                    </Card>
-            
-                </div>
+                    ) : (
+                        <div>Loading...</div>
+                    )}
+                    
+                </Card>
+        
             </div>
-        )
-    }
+        </div>
+    )
+    
 }
 
 export default Transaction;
