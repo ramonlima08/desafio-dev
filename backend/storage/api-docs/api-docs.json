@@ -6,6 +6,68 @@
         "version": "0.1"
     },
     "paths": {
+        "/api/importhistory": {
+            "get": {
+                "tags": [
+                    "Importações"
+                ],
+                "summary": "Lista as Importações",
+                "description": "Endpoint destinado a listagem das Imporações",
+                "operationId": "listImports",
+                "responses": {
+                    "200": {
+                        "description": "Lista de Imporações",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/importhistory/toreverse": {
+            "post": {
+                "tags": [
+                    "Importações"
+                ],
+                "summary": "Revert uma Importação",
+                "description": "Endpoint destinado a reverter uma importação de arquivo CNAB, removendo as transações e alterando o status da importação",
+                "operationId": "revertImports",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "description": "Id da importação"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Reverção executada com sucesso",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Parametros esperados não foram encontrados",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "500": {
+                        "description": "Erro no processamento dos dados",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "/api/transaction": {
             "get": {
                 "tags": [
