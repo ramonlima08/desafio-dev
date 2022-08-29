@@ -7,3 +7,5 @@ Route::get('transaction', [\App\Http\Controllers\Api\TransactionController::clas
 Route::get('store', [\App\Http\Controllers\Api\TransactionController::class,'stores']);
 Route::post('transaction/store', [\App\Http\Controllers\Api\TransactionController::class,'storeTransactions']);
 Route::post('transaction/import', [\App\Http\Controllers\Api\TransactionController::class,'import']);
+
+Route::get('importhistory', [\App\Http\Controllers\Api\ImportHistoryController::class,'index']);
