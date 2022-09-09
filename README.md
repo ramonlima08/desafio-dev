@@ -294,4 +294,4 @@ entregar todos os itens propostos.
 
 [GitHub](https://github.com/ramonlima08/)
 
-[LinkedIn](https://www.linkedin.com/in/ramon-lima-54816033/)
+[LinkedIn](https://www.linkedin.com/in/ramon-lima-dev/)
