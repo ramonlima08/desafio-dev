@@ -1,7 +1,7 @@
 
 # Projeto - Desafio de programação
 
-Foi proposto a realização do [desavio de desenvolvimento](https://github.com/ByCodersTec/desafio-dev) da ByCodersTec com o objetivo 
+Foi proposto a realização do [desafio de desenvolvimento](https://github.com/ByCodersTec/desafio-dev) da ByCodersTec com o objetivo 
 de avaliar meus conhecimentos técnicos em programação.
 
 A avaliação consiste em parsear o [arquivo de texto(CNAB)](https://github.com/ByCodersTec/desafio-ruby-on-rails/blob/master/CNAB.txt) 
